@@ -13,7 +13,8 @@ function App() {
   }, []);
   return (
     <div className="App">
-      {/* <header className="App-header"></header> */}
+      <header className="App-header">Rooms to Buy</header>
+      
       <RoomsList rooms={rooms} />
     </div>
   );
