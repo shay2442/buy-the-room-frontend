@@ -29,6 +29,12 @@ const RoomCard = ({ room }) => {
         >
           Details
         </button>
+        <button
+          className="details-button"
+          onClick={() => navigate(`/rooms/${room.id}/comments`)}
+        >
+          Comments
+        </button>
 
         <button className="buy-button">Buy</button>
       </div>

@@ -38,12 +38,33 @@
   width: 100%;
   height: 10vh;
   font-size: calc(50px + 2vmin);
-  color: white
+  color: white;
+  border-style: none;
   
 }
 
-.App-link {
-  color: #61dafb;
+.comments {
+  padding:0%
+  
 }
 
 
+.search {
+  /* padding: rem 1rem; */
+  margin: 2rem 0;
+  height: 7vh;
+  background-color: rgb(195, 206, 216);
+  width: 100%;
+  font-size: 30px;
+  color:rgb(255, 255, 255)
+}
+
+
+.search input {
+  margin-right: 20rem;
+  flex: 1;
+}
+
+.search button {
+  width: 150px;
+}

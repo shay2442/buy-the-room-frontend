@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-const RoomDetails = () => {
+const RoomComments = () => {
   const { id } = useParams();
   const [room, setRoom] = useState({});
 
@@ -10,21 +10,23 @@ const RoomDetails = () => {
       .then((data) => setRoom(data));
   }, [id]);
 
-//   console.log("room", room);
+  console.log("room", room);
 
   return (
     <div>
       {/* <img src={ place.image } alt="place picture" height="300" width="350"  /> */}
-      <h1>{room.id}</h1>
       <h3>
         {" "}
-        Items Included:{" "}
-        {room?.items?.map((item) => {
-          return <p>{item}</p>;
+        Comments:{" "}
+        {room?.comments?.map((comment) => {
+          return <div className="comment"><p>{comment.content} From: {comment.user.username}</p>
+          
+          </div>
+        
         })}
       </h3>
     </div>
   );
 };
 
-export default RoomDetails;
+export default RoomComments;
