@@ -1,134 +1,98 @@
-import React, { useEffect, useState } from "react";
-import { baseUrl, headers } from "../../Globals";
-import { useNavigate } from "react-router-dom";
-import { Typography, Button } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
-import { ErrorSharp } from "@mui/icons-material";
+import { useState } from "react";
 
-const Signup = ({ loginUser, loggedIn }) => {
+export default function Signup() {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
-  const navigate = useNavigate();
-  const [errors, setErrors] = useState("");
 
-  useEffect(() => {
-    if (loggedIn) {
-      navigate("/places");
-    }
-  }, [loggedIn, navigate]);
+  function handleSubmit(event) {
+    event.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setPasswordConf("");
 
-    const strongParams = {
-      user: {
-        username,
-        password,
-        password_confirmation: passwordConf,
-      },
-    };
-
-    console.log(strongParams)
-
-    fetch(baseUrl + "/users", {
+    fetch("http://localhost:3001/signup", {
       method: "POST",
-      headers,
-      body: JSON.stringify(strongParams),
-    })
-      // .then(checkStatus)
-      .then((r) => {
-        if (r.ok) {
-          r.json().then((data) => {
-            //    setUsername(user);
-            //    navigate("/places");
-            loginUser(data.user);
-            localStorage.setItem("jwt", data.token);
-            navigate("/rooms");
-          });
-        } else {
-          r.json().then((errors) => {
-            console.log(errors);
-            //    const err = {error}
-            //    const erArr = Object.values(error)
-            setErrors(errors);
-            //    console.log(err)
+      headers: {
+        Accepts: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username,
+          email,
+          password,
+          password_confirmation: passwordConf,
+        },
+      }),
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((data) => {
+          console.log("Signup sussessful:", data);
+          setUsername("");
+          setEmail("");
+          setPassword("");
+          setPasswordConf("");
+        });
+      } else {
+        console.warn("signup unsuccessful");
+      }
+    });
+  }
 
-            console.log(errors.errors);
-          });
-        }
-        // .then(data => {
-        //     loginUser(data.user);
-        //     if (data.token) {
-        //         localStorage.setItem('jwt', data.token)
-        //     }
-        //     navigate('/places')
-      });
-    // .catch(err => {
-
-    //     console.log(err)
-    //     // setError(error)
-    // })
-  };
-  // const checkStatus = (response) => {
-  //     if (response.status >= 200 && response.status < 300) {
-  //       return Promise.resolve(response)
-  //     } else {
-  //       return Promise.reject(new Error(response.err))
-  //     }
-  //   }
   return (
-    <div>
-      <h2>Create Account</h2>
-      {/* <p>
-           {error[2]}
-          </p> */}
-      <p>{errors.errors}</p>
-      <form>
-        <div>
-          <label>Username: </label>
+    <div className="signup-container">
+      <div className="signup-form">
+        <h1>Signup</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username-input">Username:</label>
+          <br />
           <input
+            className="signup-input"
+            id="username input"
             type="text"
-            name="username"
-            id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div>
-          <label>Password: </label>
+          <br />
+          <label htmlFor="email-input">Email:</label>
+          <br />
           <input
+            className="signup-input"
+            id="email input"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <label htmlFor="password-input">Password:</label>
+          <br />
+          <input
+            className="signup-input"
+            id="password input"
             type="password"
-            name="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <div>
-          <label>Password Confirmation: </label>
+          <br />
+          <label htmlFor="passwordConf-input">Password Confirmation:</label>
+          <br />
           <input
+            className="signup-input"
+            id="passwordConf input"
             type="password"
-            name="password_confirmation"
-            id="password_confirmation"
             value={passwordConf}
             onChange={(e) => setPasswordConf(e.target.value)}
           />
-        </div>
-
-        <Button
-          disabled={passwordConf.length < 1 || password !== passwordConf}
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={handleSubmit}
-          type="submit"
-          value="Create Account"
-        >
-          Create Account
-        </Button>
-      </form>
+          <br />
+          <button onClick={handleSubmit} type="submit" value="Login">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
-};
-
-export default Signup;
+}
