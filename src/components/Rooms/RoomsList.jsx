@@ -2,7 +2,7 @@ import React from "react";
 import RoomCard from "./RoomCard";
 import Search from "../static/Search";
 
-const RoomsList = ({ rooms, handleSearch, search}) => {
+const RoomsList = ({ rooms, handleSearch, search, user}) => {
 
   const roomsToDisplay = rooms.filter((room) => {
     return room.city.toLowerCase().includes(search.toLowerCase())

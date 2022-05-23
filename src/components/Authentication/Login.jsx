@@ -1,10 +1,11 @@
 import React from  'react';
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { Typography, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
-const Login = ( {loginUser, loggedIn}) => {
+const Login = ( {loginUser, loggedIn, user}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState('')
@@ -61,7 +62,9 @@ const Login = ( {loginUser, loggedIn}) => {
                 <button onClick= { handleSubmit } type="submit" value="Login">Login</button>
                 {/* <input type="submit" value="Login" /> */}
                
-            </form>
+            </form> <br/>
+            <Link className="link" to="/signup">Go back to the Sign Up Form </Link>
+
         </div>
       )
     }

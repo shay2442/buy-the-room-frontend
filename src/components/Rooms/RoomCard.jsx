@@ -36,7 +36,8 @@ const RoomCard = ({ room }) => {
           Comments
         </button>
 
-        <button className="buy-button">Buy</button>
+        <button className="buy-button" onClick={ () =>  navigate('/signup')}>Buy</button>
+        {/* <button onClick={ () => navigate(`/places/${place.id}`)}>View Notes</button> */}
       </div>
     </RoomsWrapper>
   );

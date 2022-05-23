@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Signup() {
+export default function Signup({user}) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -89,10 +91,12 @@ export default function Signup() {
           />
           <br />
           <button onClick={handleSubmit} type="submit" value="Login">
-            Login
+           Sign Up!
           </button>
         </form>
-      </div>
+      </div><br/>
+
+      <Link className="link" to="/login">Already Have an account? Login</Link>
     </div>
   );
 }

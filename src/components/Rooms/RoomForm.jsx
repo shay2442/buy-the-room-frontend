@@ -1,7 +1,10 @@
 import React from 'react'
 import {useState} from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 
-function Form({onAddItem}) {
+function Form({onAddRoom}) {
+    const params = useParams()
+    const navigate = useNavigate();
     const initialState={
         image: '',
         category: '',
@@ -30,8 +33,9 @@ function Form({onAddItem}) {
           })
             .then(r => r.json())
             .then((newItem) => {
-                onAddItem(newItem)
+                onAddRoom(newItem)
                 setFormData(initialState)})
+                navigate('/rooms')
     }
 
     return(
@@ -104,7 +108,7 @@ function Form({onAddItem}) {
 
          
 
-            <button className='submit-bttn' type="submit">Add Recipe</button>
+            <button className='submit-bttn' type="submit">Add Room</button>
         </form>
     )
 }
