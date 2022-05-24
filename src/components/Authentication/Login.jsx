@@ -1,6 +1,6 @@
 import React from  'react';
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { Typography, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
@@ -44,10 +44,10 @@ const Login = ( {loginUser, loggedIn, user}) => {
 
           setUsername("")
           setPassword("")
-             
+          navigate("/rooms")
                 
 }
-            
+
 
       return(
 

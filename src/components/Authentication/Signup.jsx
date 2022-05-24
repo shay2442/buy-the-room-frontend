@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Signup({user}) {
+export default function Signup({user, room}) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
+  const navigate = useNavigate
 
 
   function handleSubmit(event) {
@@ -38,6 +39,7 @@ export default function Signup({user}) {
           setEmail("");
           setPassword("");
           setPasswordConf("");
+        //   navigate(`/rooms/${room.id}`)
         });
       } else {
         console.warn("signup unsuccessful");
@@ -96,7 +98,8 @@ export default function Signup({user}) {
         </form>
       </div><br/>
 
-      <Link className="link" to="/login">Already Have an account? Login</Link>
+      <Link className="link" to="/login">Already Have an account? Login</Link><br/>
+      <Link className="link" to="/rooms">View rooms</Link>
     </div>
   );
 }
