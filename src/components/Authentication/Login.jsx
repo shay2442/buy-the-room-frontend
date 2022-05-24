@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Typography, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
-const Login = ( {loginUser, loggedIn, user}) => {
+const Login = ( {loginUser, loggedIn, user, setUser, setLoggedIn}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState('')
@@ -40,13 +40,14 @@ const Login = ( {loginUser, loggedIn, user}) => {
         }})
     })
           .then(r => r.json())
-          .then(data => console.log(data))
-
-          setUsername("")
-          setPassword("")
-          navigate("/rooms")
+          .then(data => {
+              console.log("This is login data",data)
+              setUser(data.user)
+              setLoggedIn(true)
+              navigate("/rooms")
                 
-}
+})
+    }
 
 
       return(

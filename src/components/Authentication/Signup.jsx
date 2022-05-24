@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Signup({user, room}) {
+export default function Signup({user, room, setUser}) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
 
   function handleSubmit(event) {
@@ -35,11 +35,13 @@ export default function Signup({user, room}) {
       if (resp.ok) {
         resp.json().then((data) => {
           console.log("Signup sussessful:", data);
+          setUser(data)
           setUsername("");
           setEmail("");
           setPassword("");
           setPasswordConf("");
-        //   navigate(`/rooms/${room.id}`)
+          console.log(room)
+            navigate("/rooms/:id/buy")
         });
       } else {
         console.warn("signup unsuccessful");
