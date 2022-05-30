@@ -38,6 +38,7 @@ function App() {
   }
 
   const logoutUser = () => {
+    // console.log("logoutUser in App.jsx called")
     setUser({})
     setLoggedIn(false)
     localStorage.removeItem('jwt')
@@ -108,17 +109,17 @@ function App() {
           <Route path="/rooms/:id/buy" element={<BuyRoomPage />} />
           <Route
             path="/signup"
-            element={<Signup user={user} setUser={setUser} />}
+            element={<Signup user={user} setUser={setUser} loginUser={loginUser} loggedIn={loggedIn} />}
           />
           <Route
             path="/login"
-            element={<Login user={user} setUser={setUser} setLoggedIn={setLoggedIn} />}
+            element={<Login user={user} setUser={setUser} setLoggedIn={setLoggedIn} loginUser={loginUser} loggedIn={loggedIn} />}
           />
           {/* <Route path="/login" element={user ? <Navigate to="/rooms" replace /> :  <Login />}/> */}
           <Route path="/rooms/:id/comments" element={<RoomComments />} />
         </Routes>
       </Router>
-      {user ? <LogoutButton setUser={setUser} /> : null}
+      {user ? <LogoutButton setUser={setUser} logoutUser={logoutUser} /> : null}
     </div>
   );
 }

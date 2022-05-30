@@ -1,9 +1,10 @@
 import React from  'react';
 import { useState, useEffect } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { Typography, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { baseUrl, headers } from '../../Globals'
 
 const Login = ( {loginUser, loggedIn, user, setUser, setLoggedIn}) => {
     const [username, setUsername] = useState('')
@@ -11,11 +12,11 @@ const Login = ( {loginUser, loggedIn, user, setUser, setLoggedIn}) => {
     const [errors, setErrors] = useState('')
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if( loggedIn ) {
-    //         navigate('/places')
-    //     }
-    // }, [loggedIn, navigate])
+    useEffect(() => {
+        if( loggedIn ) {
+            navigate('/rooms')
+        }
+    }, [loggedIn, navigate])
 
     
 
@@ -28,25 +29,27 @@ const Login = ( {loginUser, loggedIn, user, setUser, setLoggedIn}) => {
         }
     
         
-        fetch('http://localhost:3001/login', {
-          method: "POST",
-          headers: { 
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({user:{
-            username,
-            password
-        }})
-    })
-          .then(r => r.json())
-          .then(data => {
-              console.log("This is login data",data)
-              setUser(data.user)
-              setLoggedIn(true)
-              navigate("/rooms")
-                
-})
+        fetch(baseUrl + '/login', {
+            method: "POST",
+            headers,
+            body: JSON.stringify(strongParams)
+          })
+            .then((resp) => {
+              if(resp.ok) {
+               resp.json().then((data) => {
+                loginUser(data.user);
+                localStorage.setItem('jwt', data.token)
+                navigate('/rooms');
+               });
+              }else {
+                resp.json().then((errors) => {
+                  console.log(errors.error)
+                  console.log(errors)
+                  setErrors(errors)
+                  
+                })
+              }
+            })
     }
 
 

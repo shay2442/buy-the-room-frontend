@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { baseUrl, headers } from "../../Globals";
 
-export default function Signup({user, room, setUser}) {
+export default function Signup({user, room, setUser, loggedIn, loginUser}) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,50 +10,48 @@ export default function Signup({user, room, setUser}) {
   const navigate = useNavigate()
   const [errors, setErrors] = useState("");
 
-//   useEffect(() => {
-//     if (loggedIn) {
-//       navigate("/rooms");
-//     }
-//   }, [loggedIn, navigate]);
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/rooms");
+    }
+  }, [loggedIn, navigate]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setPasswordConf("");
-
-    fetch("http://localhost:3001/signup", {
-      method: "POST",
-      headers: {
-        Accepts: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const strongParams = {
         user: {
           username,
           email,
           password,
           password_confirmation: passwordConf,
         },
-      }),
-    }).then((resp) => {
-      if (resp.ok) {
-        resp.json().then((data) => {
-          console.log("Signup sussessful:", data);
-          setUser(data)
-          setUsername("");
-          setEmail("");
-          setPassword("");
-          setPasswordConf("");
-          console.log(room)
-            navigate("/rooms/:id/buy")
-        });
-      } else {
-        console.warn("signup unsuccessful");
-      }
-    });
+      };
+
+      fetch(baseUrl + "/users", {
+        method: "POST",
+        headers,
+        body: JSON.stringify(strongParams),
+      })
+      .then((r) => {
+          if (r.ok) {
+              r.json().then((data) => {
+                  loginUser(data.user);
+                  localStorage.setItem("jwt", data.token);
+                  navigate("/rooms");
+                  console.log("successful login")
+                  console.log(data)
+              });
+          } else {
+              r.json().then((errors) => {
+                  console.log(errors)
+                  console.log("Unsuccessful login")
+              })
+          }
+      })
+
+
+    
   }
 
   return (
