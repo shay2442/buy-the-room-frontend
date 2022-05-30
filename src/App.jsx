@@ -10,6 +10,7 @@ import Signup from "./components/Authentication/Signup";
 import Login from "./components/Authentication/Login";
 import LogoutButton from "./components/Authentication/LogoutButton";
 import { Link, useNavigate } from "react-router-dom";
+import { baseUrl, headers, getToken } from './Globals'
 
 function App() {
   // const baseUrl = "http://localhost:3001";
@@ -26,15 +27,20 @@ function App() {
 
   }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:3001/me")
-      .then((r) => r.json())
-      .then((data) => setUser(data));
-
-  }, []);
 
   function handleSearch(newSearch) {
     setSearch(newSearch);
+  }
+
+  const loginUser = user => {
+    setUser(user);
+    setLoggedIn(true);
+  }
+
+  const logoutUser = () => {
+    setUser({})
+    setLoggedIn(false)
+    localStorage.removeItem('jwt')
   }
 
   function addRoom(newRoom) {
@@ -44,6 +50,36 @@ function App() {
   function navigateToForm() {
     navigate("/rooms/new");
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('jwt')
+    if(token && !loggedIn) {
+      fetch(baseUrl + '/get-current-user', {
+        method: "GET",
+        headers: {
+          ...headers,
+          ...getToken() 
+          // returns authorization plus localStorage.getItem('jwt') that should send it and we want a response back
+        
+        }
+      })
+      .then(r =>r.json())
+      .then(user => loginUser(user))
+
+    }
+
+    if(loggedIn) {
+      fetch(baseUrl + '/rooms', {
+        headers: {
+          ...headers,
+          ...getToken()
+        }
+      })
+      .then(r => r.json())
+      .then(data => setRooms(data))
+
+    }
+  },[loggedIn])
 
   return (
     <div>

@@ -7,7 +7,13 @@ export default function Signup({user, room, setUser}) {
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
   const navigate = useNavigate()
+  const [errors, setErrors] = useState("");
 
+//   useEffect(() => {
+//     if (loggedIn) {
+//       navigate("/rooms");
+//     }
+//   }, [loggedIn, navigate]);
 
   function handleSubmit(event) {
     event.preventDefault();

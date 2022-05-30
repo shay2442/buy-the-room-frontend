@@ -19,7 +19,7 @@ const RoomComments = () => {
   function handleCommentSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:3001/comments", {
+    fetch("/comments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,12 +34,12 @@ const RoomComments = () => {
   }
 
   useEffect(() => {
-    //     fetch(`http://localhost:3001/rooms/${id}`)
+    //     fetch(`/rooms/${id}`)
     //       .then((r) => r.json())
     //       .then((data) => setRoom(data));
     //   }, [id]);
 
-    fetch(`http://localhost:3001/rooms/${id}`).then((r) => {
+    fetch(`/rooms/${id}`).then((r) => {
       if (r.ok) {
         r.json().then((data) => {
           console.log("comments", data);
