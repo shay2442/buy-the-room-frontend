@@ -99,7 +99,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
             onChange={(e) => setPasswordConf(e.target.value)}
           />
           <br />
-          <button onClick={handleSubmit} type="submit" value="Login">
+          <button disabled={passwordConf.length < 1 || password !== passwordConf} onClick={handleSubmit} type="submit" value="Login">
            Sign Up!
           </button>
         </form>

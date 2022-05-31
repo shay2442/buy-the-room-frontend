@@ -1,15 +1,12 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Avatar from 'react-avatar';
 
-const Navigation = ({ loggedIn, logoutUser, currentUser }) => {
+const NavBar = ({ loggedIn, logoutUser, currentUser }) => {
   const loggedOutLinks = () => {
     return (
       <div className="body">
-      <h1 className="sulogin">My Favorite Places</h1>
-      <h3 className="h3"> A place for you to save all of your favorite places and remember what you liked about them. Enjoy!</h3>
-      
-      <br></br>
       <ul>
         
         <li>
@@ -26,21 +23,23 @@ const Navigation = ({ loggedIn, logoutUser, currentUser }) => {
   const handleLogout = (e) => {
     e.preventDefault();
     logoutUser();
+    
   };
 
   const loggedInLinks = () => {
     return (
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/home">
+          <Navbar.Brand href="/rooms">
             Rooms To Buy
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/rooms">Rooms</Nav.Link>
-            <Nav.Link href="/rooms/new">Become a Seller</Nav.Link>
-            <Nav.Link onClick={handleLogout} href="/">
+            <Navbar.Brand href="/rooms/new">Become a Seller</Navbar.Brand>
+            </Nav>
+            <Nav>
+            <Navbar.Brand onClick={handleLogout} href="/">
               Logout
-            </Nav.Link>
+            </Navbar.Brand>
           </Nav>
         </Container>
       </Navbar>
@@ -50,4 +49,4 @@ const Navigation = ({ loggedIn, logoutUser, currentUser }) => {
   return <div>{loggedIn ? loggedInLinks() : loggedOutLinks()}</div>;
 };
 
-export default Navigation;
+export default NavBar;

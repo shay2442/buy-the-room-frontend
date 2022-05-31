@@ -11,6 +11,8 @@ import Login from "./components/Authentication/Login";
 import LogoutButton from "./components/Authentication/LogoutButton";
 import { Link, useNavigate } from "react-router-dom";
 import { baseUrl, headers, getToken } from './Globals'
+import NavBar from './components/Navigation/NavBar'
+import Avatar from 'react-avatar';
 
 function App() {
   // const baseUrl = "http://localhost:3001";
@@ -86,16 +88,13 @@ function App() {
     <div>
       <div className="App">
         <header className="App-header">
-          Rooms to Buy<button onClick={navigateToForm}>Become a Seller</button>
-          {user && <p style={{ color: 'red' }}>Welcome, {user.username}!</p>}
+          { loggedIn ? <h1>Welcome, {user.username}! <Avatar googleId="118096717852922241760" size="50" round={true} /></h1> : <h1 className="App">Buy the Room</h1> }
         </header>
       </div>
       <Router>
-        {/* <Navigation/> */}
+      <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={ user } />
         <Routes>
-          <Route
-            path="/rooms"
-            element={
+          <Route path="/rooms" element={
               <RoomsList
                 rooms={rooms}
                 search={search}
@@ -119,7 +118,6 @@ function App() {
           <Route path="/rooms/:id/comments" element={<RoomComments />} />
         </Routes>
       </Router>
-      {user ? <LogoutButton setUser={setUser} logoutUser={logoutUser} /> : null}
     </div>
   );
 }
