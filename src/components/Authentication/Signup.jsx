@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { baseUrl, headers } from "../../Globals";
+import { Button, Header, Form, Grid, Segment } from 'semantic-ui-react'
 
 export default function Signup({user, room, setUser, loggedIn, loginUser}) {
   const [username, setUsername] = useState("");
@@ -38,9 +39,9 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
               r.json().then((data) => {
                   loginUser(data.user);
                   localStorage.setItem("jwt", data.token);
-                  navigate("/rooms");
+                  // console.log(data.token)
                   console.log("successful login")
-                  console.log(data)
+                  // console.log(data)
               });
           } else {
               r.json().then((errors) => {
@@ -55,58 +56,68 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
   }
 
   return (
-    <div className="signup-container">
-      <div className="signup-form">
-        <h1>Signup</h1>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="username-input">Username:</label>
-          <br />
-          <input
-            className="signup-input"
-            id="username input"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <br />
-          <label htmlFor="email-input">Email:</label>
-          <br />
-          <input
-            className="signup-input"
-            id="email input"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
-          <label htmlFor="password-input">Password:</label>
-          <br />
-          <input
-            className="signup-input"
-            id="password input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <label htmlFor="passwordConf-input">Password Confirmation:</label>
-          <br />
-          <input
-            className="signup-input"
-            id="passwordConf input"
-            type="password"
-            value={passwordConf}
-            onChange={(e) => setPasswordConf(e.target.value)}
-          />
-          <br />
-          <button disabled={passwordConf.length < 1 || password !== passwordConf} onClick={handleSubmit} type="submit" value="Login">
-           Sign Up!
-          </button>
-        </form>
-      </div><br/>
+    <div style= {{ paddingTop: "50px" }}>
+    <Grid textAlign="center" verticalAlign="middle">
+      <Grid.Column style= {{ maxWidth: 450 }}>
+        
+         <Header as="h1" textAlign='center'>Sign Up!</Header>
+        
+          <Form onSubmit={handleSubmit}>
 
-      <Link className="link" to="/login">Already Have an account? Login</Link><br/>
-      <Link className="link" to="/rooms">View rooms</Link>
+              <Segment>
+                 
+                  <Form.Input 
+                     placeholder='Username'
+                     name="username"
+                      type='text'
+                      id='username'
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      />
+                       <Form.Input 
+                      placeholder='ex: email@email.com'
+                      name="email"
+                       type="text"
+                       id="email"
+                       value={email} 
+                       onChange={(e) => setEmail(e.target.value)}
+                      />
+                  <Form.Input 
+                      placeholder='Password'
+                      name="password"
+                      icon='lock'
+                      iconPosition='left'
+                      type='password'  
+                      id='password'
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                       />
+                   <Form.Input 
+                      placeholder='Password Confirmation'
+                      name="passwordConfirmation"
+                      icon='lock'
+                      iconPosition='left'
+                      type='password'  
+                      id='passwordConfirmation'
+                      value={passwordConf}
+                      onChange={(e) => setPasswordConf(e.target.value)}
+                   />
+              </Segment>
+
+              <Segment>
+                  <Button  color='blue'fluid type='submit'>"Sign Up"</Button>
+                  
+              </Segment>
+
+          </Form>
+            
+    </Grid.Column>
+  </Grid>
+
+  <br/>
+
+      {/* <Link className="link" to="/login">Already Have an account? Login</Link><br/>
+      <Link className="link" to="/rooms">View rooms</Link> */}
     </div>
   );
 }

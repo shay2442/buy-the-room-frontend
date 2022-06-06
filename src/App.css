@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-size: 50px;
+  margin: 0px;
 }
 
 /* /* .link{
@@ -51,7 +52,7 @@
   .details-button:active {
   background: #144E75; }
 .buy-button{
-  color: rgb(255, 255, 255); font-size: 25px; line-height: 15px; padding: 8px; border-radius: 10px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-color:rgb(119, 134, 148); display: inline-block; float: right;}
+  color: rgb(134, 127, 127); font-size: 25px; line-height: 15px; padding: 8px; border-radius: 10px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-color:rgb(229, 234, 240); display: inline-block; float: right;}
   .buy-button:hover {
   background: #1C6EA4; }
   .buy-button:active {

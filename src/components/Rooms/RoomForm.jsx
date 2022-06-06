@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { baseUrl, headers, getToken } from '../../Globals'
 
 function Form({onAddRoom}) {
     const params = useParams()
@@ -27,12 +28,15 @@ function Form({onAddRoom}) {
         fetch('http://localhost:3001/rooms', {
             method: "POST",
             headers: {
-              "Content-Type": "application/json",
-            },
+                ...headers,
+                ...getToken() 
+              
+              },
            body: JSON.stringify(formData),
           })
             .then(r => r.json())
             .then((newItem) => {
+                console.log(newItem)
                 onAddRoom(newItem)
                 setFormData(initialState)})
                 navigate('/rooms')

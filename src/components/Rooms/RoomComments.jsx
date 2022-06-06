@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { baseUrl, headers, getToken } from '../../Globals'
 
-const RoomComments = () => {
+const RoomComments = ({user}) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [room, setRoom] = useState({});
@@ -19,30 +20,29 @@ const RoomComments = () => {
   function handleCommentSubmit(e) {
     e.preventDefault();
 
-    fetch("/comments", {
+    fetch("http://localhost:3001/comments", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        ...headers,
+        ...getToken() 
+
+      
       },
       body: JSON.stringify(commentFormData),
     })
       .then((r) => r.json())
       .then((newComment) => {
+        console.log(newComment)
         setCommentFormData(initialState);
         setRoom({ ...room, comments: [...room.comments, newComment] });
       });
   }
 
   useEffect(() => {
-    //     fetch(`/rooms/${id}`)
-    //       .then((r) => r.json())
-    //       .then((data) => setRoom(data));
-    //   }, [id]);
-
-    fetch(`/rooms/${id}`).then((r) => {
+    fetch(`http://localhost:3001/rooms/${id}`).then((r) => {
       if (r.ok) {
         r.json().then((data) => {
-          console.log("comments", data);
+          // console.log("comments", data);
           setRoom(data);
         });
       } else {
@@ -50,9 +50,9 @@ const RoomComments = () => {
       }
     });
   }, [id]);
+ 
 
-  //   console.log("room", room);
-  console.log(room.comments);
+  // console.log(room.comments);
   return (
     <div>
       {/* <img src={ place.image } alt="place picture" height="300" width="350"  /> */}
