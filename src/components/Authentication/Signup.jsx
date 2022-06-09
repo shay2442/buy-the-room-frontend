@@ -105,7 +105,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
               </Segment>
 
               <Segment>
-                  <Button  color='blue'fluid type='submit'>"Sign Up"</Button>
+                  <Button disabled={passwordConf.length < 1 || password !== passwordConf} color='blue'fluid type='submit'>Sign Up</Button>
                   
               </Segment>
 
@@ -116,8 +116,8 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
 
   <br/>
 
-      {/* <Link className="link" to="/login">Already Have an account? Login</Link><br/>
-      <Link className="link" to="/rooms">View rooms</Link> */}
+      <Link className="link" to="/login">Already Have an account? Login</Link><br/>
+      <Link className="link" to="/rooms">View rooms</Link>
     </div>
   );
 }

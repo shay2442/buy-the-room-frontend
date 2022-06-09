@@ -2,7 +2,7 @@ import React from "react";
 import RoomCard from "./RoomCard";
 import Search from "../static/Search";
 
-const RoomsList = ({ rooms, handleSearch, search, user, addToCart}) => {
+const RoomsList = ({ rooms, handleSearch, search, user, addToCart, handleDelete}) => {
 
   const roomsToDisplay = rooms.filter((room) => {
     return room.city.toLowerCase().includes(search.toLowerCase())
@@ -10,7 +10,7 @@ const RoomsList = ({ rooms, handleSearch, search, user, addToCart}) => {
 
 
   const roomCards = roomsToDisplay.map((room) => <
-    RoomCard key={room.id} room={room} addToCart={addToCart} />);
+    RoomCard key={room.id} room={room} addToCart={addToCart} handleDelete={handleDelete} />);
 
     return (
       <div className="orders-page">

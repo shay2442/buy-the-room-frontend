@@ -97,6 +97,35 @@ function App() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  function updateItem(updatedItem) {
+    const newRooms = rooms.map(room => {
+      if (updatedItem.id === room.id){
+          return updatedItem
+      } else {
+          return room
+      }
+    })
+
+    setRooms(newRooms)
+    
+  }
+
+
+  function handleDelete(id) {
+    fetch(`http://localhost:3001/rooms/${id}`, {
+      method: "DELETE",
+      headers: {
+        ...headers,
+        ...getToken()
+      }
+
+    })
+    .then(() => {
+      const updatedRooms = rooms.filter((room) => id !== room.id)
+      setRooms(updatedRooms)
+    })
+  }
+
   const getCartTotal = () => {
     return cart.reduce((sum, { quantity }) => sum + quantity, 0);
   };
@@ -137,13 +166,15 @@ function App() {
               handleSearch={handleSearch}
               user={user}
               addToCart={addToCart}
+              handleDelete={handleDelete}
             />
           }
         />
-        <Route path="/rooms/new" element={<RoomForm onAddRoom={addRoom} />} />
+        <Route path="/rooms/new" element={<RoomForm onAddRoom={addRoom} updateItem={updateItem} rooms={rooms} />} />
+        <Route exact path="/rooms/:id/edit" element={<RoomForm rooms={rooms} onAddRoom={addRoom} updateItem={updateItem} />} />
         <Route path="/rooms/:id" element={<RoomDetails />} />
         <Route path="/rooms/:id/buy" element={<BuyRoomPage />} />
-        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} getCartTotal={getCartTotal} />} />
         <Route
           path="/signup"
           element={
