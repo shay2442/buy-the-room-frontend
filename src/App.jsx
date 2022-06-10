@@ -98,32 +98,28 @@ function App() {
   }, [cart]);
 
   function updateItem(updatedItem) {
-    const newRooms = rooms.map(room => {
-      if (updatedItem.id === room.id){
-          return updatedItem
+    const newRooms = rooms.map((room) => {
+      if (updatedItem.id === room.id) {
+        return updatedItem;
       } else {
-          return room
+        return room;
       }
-    })
+    });
 
-    setRooms(newRooms)
-    
+    setRooms(newRooms);
   }
-
 
   function handleDelete(id) {
     fetch(`http://localhost:3001/rooms/${id}`, {
       method: "DELETE",
       headers: {
         ...headers,
-        ...getToken()
-      }
-
-    })
-    .then(() => {
-      const updatedRooms = rooms.filter((room) => id !== room.id)
-      setRooms(updatedRooms)
-    })
+        ...getToken(),
+      },
+    }).then(() => {
+      const updatedRooms = rooms.filter((room) => id !== room.id);
+      setRooms(updatedRooms);
+    });
   }
 
   const getCartTotal = () => {
@@ -132,7 +128,7 @@ function App() {
 
   return (
     <div>
-      <div className="App">
+     
         <header className="App-header">
           {loggedIn ? (
             <h1>
@@ -143,18 +139,15 @@ function App() {
                 round={true}
                 color="silver"
               />
+              <img className="logo-alt" src="/images/logo2.jpg" alt="Buy The Room" />
             </h1>
+            
           ) : (
-            <h1 className="App">Buy the Room</h1>
+            <img className="logo" src="/images/logo.jpg" alt="Buy The Room" />
           )}
         </header>
-      </div>
-      <div>
-        <Link to="/cart">
-          <h3>🛒 Cart: {cart.length}</h3>
-        </Link>
-        {/* <button onClick={() => {getCartTotal()}}>Go To Cart</button> */}
-      </div>
+   
+    
       <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={user} />
       <Routes>
         <Route
@@ -167,14 +160,39 @@ function App() {
               user={user}
               addToCart={addToCart}
               handleDelete={handleDelete}
+              cart={cart}
             />
           }
         />
-        <Route path="/rooms/new" element={<RoomForm onAddRoom={addRoom} updateItem={updateItem} rooms={rooms} />} />
-        <Route exact path="/rooms/:id/edit" element={<RoomForm rooms={rooms} onAddRoom={addRoom} updateItem={updateItem} />} />
+        <Route
+          path="/rooms/new"
+          element={
+            <RoomForm
+              onAddRoom={addRoom}
+              updateItem={updateItem}
+              rooms={rooms}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/rooms/:id/edit"
+          element={
+            <RoomForm
+              rooms={rooms}
+              onAddRoom={addRoom}
+              updateItem={updateItem}
+            />
+          }
+        />
         <Route path="/rooms/:id" element={<RoomDetails />} />
         <Route path="/rooms/:id/buy" element={<BuyRoomPage />} />
-        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} getCartTotal={getCartTotal} />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart cart={cart} setCart={setCart} getCartTotal={getCartTotal} />
+          }
+        />
         <Route
           path="/signup"
           element={

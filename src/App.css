@@ -1,32 +1,84 @@
-.App {
+/* .App {
   text-align: center;
   font-size: 50px;
   margin: 0px;
+  background-color: black;
+} */
+.App-header {
+  background-color: rgb(195, 206, 216);
+  width: 100%;
+  height: 10vh;
+  font-size: calc(10px + 2vmin);
+  color: rgb(105, 99, 99);
+  padding-top: 0px;
+  
 }
 
-/* /* .link{
-  background-color: #515357;
+.errors {
+  color: blue;
+}
+.cart-container {
+  background-color: rgb(195, 206, 216);
+
+}
+
+.form {
+
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #ccc;
+  font-size: 30px;
+  text-align: center;
+ 
+}
+
+.login {
+  /* width: 100%; */
+  height: 50px;
   font-size: 40px;
-  color: rgb(71, 181, 255);
-  text-orientation: upright;
-  position:absolute;
-  top:0;
-  right:0;
+  text-align: center;
+  display: block;
+  /* margin-left: 100px; */
+  /* margin-right: 100px; */
+ 
+}
 
-} */
+.login-input {
+  width: 100%;
+  margin: 10px;
+  height: 40px;
+  font-size: 40px;
+  text-align: center;
 
- /* .link{
-  position:absolute;
-  padding-top: 0px;
-  right:0;
-  float:right;
-} 
-.link2{
-  position:absolute;
-  top:.5;
-  right:0;
-  float:right;
-}  */
+}
+
+.logo{
+  height: 240px;
+  width: 700px;
+  margin-left: 400px;;
+  margin-bottom: 200px;
+ 
+  
+}
+
+.logo-alt {
+  height: 200px;
+  width: 400px;
+  float: right;
+}
+
+.input {
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+
+  
+}
 
 .card-container {
   /* display: flex;
@@ -35,12 +87,17 @@
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  background-color: rgb(195, 206, 216);
 }
 
 .card {
   background-color: rgb(195, 206, 216);
   width: 100%;
   height: 100%;
+}
+
+.cart-link {
+  background-color: rgb(195, 206, 216);
 }
 
 .details-button {
@@ -59,15 +116,11 @@
   background: #144E75; }
 
 
-.App-header {
-  background-color: rgb(195, 206, 216);
-  width: 100%;
-  height: 10vh;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  /* border-style: none;
-  text-align: center; */
-  
+
+
+.title {
+  text-align: center;
+  font-size: 40px;
 }
 
 .comments {
@@ -82,17 +135,46 @@
   font-size: 30px;
 }
 
+/* .arrow-button {
+  height: 20px;
+  width: 20px;
+  padding: 100px;
+} */
+
+.forward-arrow-button {
+  color: rgb(105, 203, 255); font-size: 15px; font-weight: bold; text-decoration: none; font-style: normal; font-size: 50px;}
+  .myButton:hover {
+  background: #1C6EA4; }
+  .myButton:active {
+  background: #144E75; 
+}
+
+.back-arrow-button {
+  color: rgb(105, 203, 255); font-size: 15px; font-weight: bold; text-decoration: none; font-style: normal; font-size: 50px;}
+  .myButton:hover {
+  background: #1C6EA4; }
+  .myButton:active {
+  background: #144E75; 
+
+}
 
 .search {
-  /* padding: rem 1rem; */
-  margin: 2rem 0;
+
   height: 7vh;
   background-color: rgb(195, 206, 216);
   width: 100%;
   font-size: 30px;
-  color:rgb(255, 255, 255)
+  color: #5c5a54;
+  font-weight: bold;
 }
 
+.details-container {
+  background-color: rgb(195, 206, 216);
+}
+/* .image-details-container {
+  background-color: white;
+  height: 200px;
+} */
 
 .search input {
   margin-right: 20rem;

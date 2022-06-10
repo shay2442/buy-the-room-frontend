@@ -47,6 +47,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
               r.json().then((errors) => {
                   console.log(errors)
                   console.log("Unsuccessful login")
+                  setErrors(errors)
               })
           }
       })
@@ -57,16 +58,17 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
 
   return (
     <div style= {{ paddingTop: "50px" }}>
-    <Grid textAlign="center" verticalAlign="middle">
-      <Grid.Column style= {{ maxWidth: 450 }}>
+    {/* <Grid textAlign="center" verticalAlign="middle">
+      <Grid.Column style= {{ maxWidth: 450 }}> */}
         
-         <Header as="h1" textAlign='center'>Sign Up!</Header>
+         <Header className="title">Sign Up!</Header>
+         <h3 className="errors"> {errors.error} </h3>
         
-          <Form onSubmit={handleSubmit}>
+          <form className='form' onSubmit={handleSubmit}>
 
-              <Segment>
+              
                  
-                  <Form.Input 
+                  <input className="input" 
                      placeholder='Username'
                      name="username"
                       type='text'
@@ -74,7 +76,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       />
-                       <Form.Input 
+                       <input className="input" 
                       placeholder='ex: email@email.com'
                       name="email"
                        type="text"
@@ -82,7 +84,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
                        value={email} 
                        onChange={(e) => setEmail(e.target.value)}
                       />
-                  <Form.Input 
+                  <input className="input" 
                       placeholder='Password'
                       name="password"
                       icon='lock'
@@ -92,7 +94,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                        />
-                   <Form.Input 
+                   <input className="input" 
                       placeholder='Password Confirmation'
                       name="passwordConfirmation"
                       icon='lock'
@@ -102,17 +104,17 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
                       value={passwordConf}
                       onChange={(e) => setPasswordConf(e.target.value)}
                    />
-              </Segment>
+              
 
-              <Segment>
+            
                   <Button disabled={passwordConf.length < 1 || password !== passwordConf} color='blue'fluid type='submit'>Sign Up</Button>
                   
-              </Segment>
+         
 
-          </Form>
+          </form>
             
-    </Grid.Column>
-  </Grid>
+
+
 
   <br/>
 

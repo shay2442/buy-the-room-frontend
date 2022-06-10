@@ -17,7 +17,7 @@ const RoomCard = ({ room, addToCart, handleDelete }) => {
             src={room.image}
             alt="No Pic"
             height="200"
-            width="300"
+            width="280"
           />
           <div>
             <strong>Category: {room.category}</strong>
@@ -62,8 +62,9 @@ const RoomCard = ({ room, addToCart, handleDelete }) => {
 };
 
 export default RoomCard;
+
 const Card = styled.div`
-  width: 300px;
+  width: 280px;
   height: 450px;
   margin: 10px;
   padding: 25px;

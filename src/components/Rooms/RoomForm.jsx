@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { baseUrl, headers, getToken } from "../../Globals";
+import styled from "styled-components";
 
 function Form({ onAddRoom, updateItem, rooms }) {
   const URL = "http://localhost:3001/rooms";
@@ -13,6 +14,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
     city: "",
     state: "",
     description: "",
+    items:"",
     price: "",
     images: [],
   };
@@ -48,7 +50,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
     })
       .then((r) => r.json())
       .then((newItem) => {
-        // console.log(newItem);
+        console.log(newItem);
         onAddRoom(newItem);
         setFormData(initialState);
       });
@@ -113,7 +115,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
     <form onSubmit={handleSubmit} className="form">
       <label>
         Image:
-        <input
+        <input className="input"
           type="text"
           name="image"
           value={formData.image}
@@ -122,12 +124,13 @@ function Form({ onAddRoom, updateItem, rooms }) {
       </label>
       <label>
         Type of Room:
-        <select
+        <select className="input"
           name="category"
+          placeholder= "Please select one"
           value={formData.category}
           onChange={handleChange}
         >
-          <option value="all">Type of Room</option>
+          <option value="all">Please select one</option>
           <option value="Living Room">Living Room</option>
           <option value="Bedroom">Bedroom</option>
           <option value="Office">Office</option>
@@ -142,7 +145,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
 
       <label>
         City:
-        <input
+        <input className="input"
           type="text"
           name="city"
           value={formData.city}
@@ -152,7 +155,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
 
       <label>
         State:
-        <input
+        <input className="input"
           type="text"
           name="state"
           value={formData.state}
@@ -160,8 +163,8 @@ function Form({ onAddRoom, updateItem, rooms }) {
         ></input>
       </label>
       <label>
-        Description:
-        <input
+        Short Description:
+        <input className="input"
           type="text"
           name="description"
           value={formData.description}
@@ -169,8 +172,17 @@ function Form({ onAddRoom, updateItem, rooms }) {
         ></input>
       </label>
       <label>
+        Items Included:
+        <input className="input"
+          type="text"
+          name="items"
+          value={formData.items}
+          onChange={handleChange}
+        ></input>
+      </label>
+      <label>
         Price:
-        <input
+        <input className="input"
           type="text"
           name="price"
           value={formData.price}
@@ -197,3 +209,6 @@ function Form({ onAddRoom, updateItem, rooms }) {
 }
 
 export default Form;
+
+const NewForm = styled.div`
+width: 100%;`

@@ -55,19 +55,19 @@ const Login = ( {loginUser, loggedIn, user, setUser, setLoggedIn}) => {
 
       return(
 
-    <div className="container">
+    <div className="form">
             <h2 className="title">Login</h2>
-            <h3> {errors.error} </h3>
+            <h3 className="errors"> {errors.error} </h3>
             <form onSubmit={ handleSubmit } >
             <label>Username</label>
-                <input type="text" name="" id="" value={ username } onChange= { e => setUsername(e.target.value) }/>
+                <input className="login-input" type="text" name="" id="" value={ username } onChange= { e => setUsername(e.target.value) }/>
                 <label>Password</label>
-                <input type="password" name="" id="" value={ password } onChange= { e => setPassword(e.target.value) }/>
+                <input className="login-input" type="password" name="" id="" value={ password } onChange= { e => setPassword(e.target.value) }/>
                 <button onClick= { handleSubmit } type="submit" value="Login">Login</button>
                 {/* <input type="submit" value="Login" /> */}
                
             </form> <br/>
-            <Link className="link" to="/signup">Go back to the Sign Up Form </Link>
+           
 
         </div>
       )

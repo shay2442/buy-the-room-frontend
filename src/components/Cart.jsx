@@ -16,7 +16,7 @@ function Cart({cart, setCart, getCartTotal}){
  
   
   return(  
-    <>
+    <div className="cart-container">
         {cart.map(item => <div><img height="200" width="200" src={item.image}/> $ {item.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
         <button onClick={() => removeFromCart(item)}>Remove</button>
         </div>)}
@@ -26,7 +26,7 @@ function Cart({cart, setCart, getCartTotal}){
         
         <button className="button" onClick={() => navigate('/signup')}>Purchase</button>
     
-    </>
+    </div>
   )
 }
 
