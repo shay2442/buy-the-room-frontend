@@ -14,7 +14,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
     city: "",
     state: "",
     description: "",
-    items:"",
+    items: "",
     price: "",
     images: [],
   };
@@ -28,7 +28,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
       const roomWeWantToEdit = rooms.find(
         (room) => room.id === parseInt(params.id)
       );
-    //   console.log(roomWeWantToEdit);
+      //   console.log(roomWeWantToEdit);
       setFormData(roomWeWantToEdit);
     } else {
       setFormData(initialState);
@@ -70,7 +70,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
     })
       .then((r) => r.json())
       .then((updatedItem) => {
-          console.log(updatedItem)
+        console.log(updatedItem);
         updateItem(updatedItem);
         setFormData(initialState);
         navigate("/rooms");
@@ -109,13 +109,14 @@ function Form({ onAddRoom, updateItem, rooms }) {
     setNumberOfImageFields(numberOfImageFields + 1);
   };
 
-//   console.log("images", formData.images);
+  //   console.log("images", formData.images);
 
   return (
     <form onSubmit={handleSubmit} className="form">
       <label>
         Image:
-        <input className="input"
+        <input
+          className="input"
           type="text"
           name="image"
           value={formData.image}
@@ -124,9 +125,10 @@ function Form({ onAddRoom, updateItem, rooms }) {
       </label>
       <label>
         Type of Room:
-        <select className="input"
+        <select
+          className="input"
           name="category"
-          placeholder= "Please select one"
+          placeholder="Please select one"
           value={formData.category}
           onChange={handleChange}
         >
@@ -145,7 +147,8 @@ function Form({ onAddRoom, updateItem, rooms }) {
 
       <label>
         City:
-        <input className="input"
+        <input
+          className="input"
           type="text"
           name="city"
           value={formData.city}
@@ -155,7 +158,8 @@ function Form({ onAddRoom, updateItem, rooms }) {
 
       <label>
         State:
-        <input className="input"
+        <input
+          className="input"
           type="text"
           name="state"
           value={formData.state}
@@ -164,7 +168,8 @@ function Form({ onAddRoom, updateItem, rooms }) {
       </label>
       <label>
         Short Description:
-        <input className="input"
+        <input
+          className="input"
           type="text"
           name="description"
           value={formData.description}
@@ -173,7 +178,8 @@ function Form({ onAddRoom, updateItem, rooms }) {
       </label>
       <label>
         Items Included:
-        <input className="input"
+        <input
+          className="input"
           type="text"
           name="items"
           value={formData.items}
@@ -182,7 +188,8 @@ function Form({ onAddRoom, updateItem, rooms }) {
       </label>
       <label>
         Price:
-        <input className="input"
+        <input
+          className="input"
           type="text"
           name="price"
           value={formData.price}
@@ -211,4 +218,5 @@ function Form({ onAddRoom, updateItem, rooms }) {
 export default Form;
 
 const NewForm = styled.div`
-width: 100%;`
+  width: 100%;
+`;

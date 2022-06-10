@@ -38,6 +38,7 @@ const Login = ( {loginUser, loggedIn, user, setUser, setLoggedIn}) => {
               if(resp.ok) {
                resp.json().then((data) => {
                 loginUser(data.user);
+                console.log(data)
                 localStorage.setItem('jwt', data.token)
                 navigate('/rooms');
                });

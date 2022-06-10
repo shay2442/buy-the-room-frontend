@@ -1,10 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { baseUrl, headers, getToken } from '../../Globals'
+import styled from "styled-components";
+
 
 const RoomComments = ({user}) => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [errors, setErrors] = useState('')
   const [room, setRoom] = useState({});
   const initialState = {
     content: "",
@@ -30,12 +33,21 @@ const RoomComments = ({user}) => {
       },
       body: JSON.stringify(commentFormData),
     })
-      .then((r) => r.json())
-      .then((newComment) => {
+      .then((r) => {
+        if(r.ok) {
+          r.json().then((newComment) => {
         console.log(newComment)
         setCommentFormData(initialState);
         setRoom({ ...room, comments: [...room.comments, newComment] });
       });
+  }else {
+    r.json().then((errors) => {
+      console.log(errors.error)
+      console.log(errors)
+      setErrors(errors)
+    })
+  }
+})
   }
 
   useEffect(() => {
@@ -54,22 +66,10 @@ const RoomComments = ({user}) => {
 
   // console.log(room.comments);
   return (
-    <div>
-      {/* <img src={ place.image } alt="place picture" height="300" width="350"  /> */}
-      <h3>
-        {" "}
-        Comments:{" "}
-        {room?.comments?.map((comment) => {
-          return (
-            <div className="comment">
-              <p>
-                {comment.content} From: {comment.user.username}
-              </p>
-            </div>
-          );
-        })}
-      </h3>
-      <form onSubmit={handleCommentSubmit} className="form">
+    <div >
+    <Comments>
+     <h3 className="error"> {errors.message} </h3>
+     <form onSubmit={handleCommentSubmit} className="form">
         <label>
           Comment:
           <input
@@ -83,8 +83,28 @@ const RoomComments = ({user}) => {
           Add Comment
         </button>
       </form>
+      {/* <img src={ place.image } alt="place picture" height="300" width="350"  /> */}
+      <h3 className="comments">
+        {" "}
+        Comments:{" "}
+        {room?.comments?.map((comment) => {
+          return (
+            <div className="comment">
+              <p>
+                {comment.content} From: {comment.user.username}
+              </p>
+            </div>
+          );
+        })}
+      </h3>
+      </Comments>
     </div>
   );
 };
 
 export default RoomComments;
+
+const Comments = styled.div`
+ font-family: "Helvetica Neue", "Helvetica";
+  color:rgb(105, 99, 99)
+;`

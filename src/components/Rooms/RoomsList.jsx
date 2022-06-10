@@ -12,7 +12,7 @@ const RoomsList = ({ rooms, handleSearch, search, user, addToCart, handleDelete,
 
 
   const roomCards = roomsToDisplay.map((room) => <
-    RoomCard key={room.id} room={room} addToCart={addToCart} handleDelete={handleDelete} />);
+    RoomCard key={room.id} room={room} addToCart={addToCart} handleDelete={handleDelete} user={user} />);
 
     return (
       <div className="orders-page">

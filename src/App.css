@@ -168,12 +168,25 @@
   font-weight: bold;
 }
 
+.error {
+  color: blue;
+}
+
+.comments-container {
+  background-color: red;
+}
+
 .details-container {
   background-color: rgb(195, 206, 216);
 }
 /* .image-details-container {
   background-color: white;
   height: 200px;
+} */
+
+/* .comments {
+  font-family: "Helvetica Neue", "Helvetica";
+  color:rgb(105, 99, 99)
 } */
 
 .search input {
