@@ -13,6 +13,10 @@ function Cart({cart, setCart, getCartTotal}){
     setCart(tempCart)
   }
 
+  function handlePurchase() {
+      navigate(-1)
+  }
+
  
   
   return(  

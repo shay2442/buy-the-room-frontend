@@ -182,6 +182,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
           className="input"
           type="text"
           name="items"
+          placeholder="list items seperated by a comma"
           value={formData.items}
           onChange={handleChange}
         ></input>

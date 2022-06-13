@@ -39,9 +39,11 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
               r.json().then((data) => {
                   loginUser(data.user);
                   localStorage.setItem("jwt", data.token);
-                  // console.log(data.token)
+                
                   console.log("successful login")
-                  // console.log(data)
+                  console.log(data)
+
+                  localStorage.getItem("cart")? navigate("/cart") : navigate("/room")
               });
           } else {
               r.json().then((errors) => {
