@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { baseUrl, headers } from '../../Globals'
 
 const RoomDetails = () => {
   const { id } = useParams();
@@ -8,7 +9,7 @@ const RoomDetails = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/rooms/${id}`)
+    fetch(baseUrl + `/rooms/${id}`)
       .then((r) => r.json())
       .then((data) => setRoom(data));
   }, [id, setRoom]);

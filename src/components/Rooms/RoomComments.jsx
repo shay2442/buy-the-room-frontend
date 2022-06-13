@@ -23,7 +23,7 @@ const RoomComments = ({user}) => {
   function handleCommentSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:3001/comments", {
+    fetch(baseUrl + "/comments", {
       method: "POST",
       headers: {
         ...headers,
@@ -51,7 +51,7 @@ const RoomComments = ({user}) => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:3001/rooms/${id}`).then((r) => {
+    fetch(baseUrl + `/rooms/${id}`).then((r) => {
       if (r.ok) {
         r.json().then((data) => {
           // console.log("comments", data);

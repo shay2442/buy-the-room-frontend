@@ -40,7 +40,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
   }
 
   function createRoom() {
-    fetch("http://localhost:3001/rooms", {
+    fetch(baseUrl + "/rooms", {
       method: "POST",
       headers: {
         ...headers,
@@ -63,7 +63,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     };
-    fetch(URL + `/${id}`, {
+    fetch(baseUrl + `/rooms/${id}`, {
       method: "PATCH",
       headers,
       body: JSON.stringify(formData),

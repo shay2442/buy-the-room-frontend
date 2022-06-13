@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { baseUrl, headers } from '../../Globals'
 const RoomDetails = () => {
   const { id } = useParams();
   const [room, setRoom] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:3001/rooms/${id}`)
+    fetch(baseUrl + `/rooms/${id}`)
       .then((r) => r.json())
       .then((data) => setRoom(data));
   }, [id]);

@@ -20,7 +20,7 @@ import Header from "./components/Header";
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
 function App() {
-  // const baseUrl = "http://localhost:3001";
+ 
   const navigate = useNavigate();
   const [rooms, setRooms] = useState([]);
   const [search, setSearch] = useState("");
@@ -29,7 +29,7 @@ function App() {
   const [cart, setCart] = useState(cartFromLocalStorage);
 
   useEffect(() => {
-    fetch("http://localhost:3001/rooms")
+    fetch(baseUrl + "/rooms")
       .then((r) => r.json())
       .then((data) => setRooms(data));
   }, []);
@@ -110,7 +110,7 @@ function App() {
   }
 
   function handleDelete(id) {
-    fetch(`http://localhost:3001/rooms/${id}`, {
+    fetch(baseUrl +`/rooms/${id}`, {
       method: "DELETE",
       headers: {
         ...headers,
@@ -190,7 +190,7 @@ function App() {
         <Route
           path="/cart"
           element={
-            <Cart cart={cart} setCart={setCart} getCartTotal={getCartTotal}/>
+            <Cart cart={cart} setCart={setCart} getCartTotal={getCartTotal} loggedIn={loggedIn}/>
           }
         />
         <Route
