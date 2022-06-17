@@ -61,10 +61,10 @@ const Login = ( {loginUser, loggedIn, user, setUser, setLoggedIn}) => {
             <h3 className="errors"> {errors.error} </h3>
             <form onSubmit={ handleSubmit } >
             <label>Username</label>
-                <input className="login-input" type="text" name="" id="" value={ username } onChange= { e => setUsername(e.target.value) }/>
+                <input className="input" type="text" name="" id="" value={ username } onChange= { e => setUsername(e.target.value) }/>
                 <label>Password</label>
-                <input className="login-input" type="password" name="" id="" value={ password } onChange= { e => setPassword(e.target.value) }/>
-                <button onClick= { handleSubmit } type="submit" value="Login">Login</button>
+                <input className="input" type="password" name="" id="" value={ password } onChange= { e => setPassword(e.target.value) }/>
+                <button className="button" onClick= { handleSubmit } type="submit" value="Login">Login</button>
                 {/* <input type="submit" value="Login" /> */}
                
             </form> <br/>

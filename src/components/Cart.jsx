@@ -21,16 +21,22 @@ function Cart({cart, setCart, getCartTotal}){
   
   return(  
     <div className="cart-container">
-        {cart.map(item => <div><img height="200" width="200" src={item.image}/> $ {item.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
-        <button onClick={() => removeFromCart(item)}>Remove</button>
+        <div className="cart-price">{cart.map(item => <div><img height="200" width="200" src={item.image}/>
+
+         $ {item.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+         <br/>
+        
+        <button className="remove-button" onClick={() => removeFromCart(item)}>Remove</button>
         </div>)}
-        <h1>Total:${cart.reduce((previousValue, currentValue) =>{return parseInt(previousValue) + currentValue.price},0)}</h1>
+        <h1 className="cart-total">Total:${cart.reduce((previousValue, currentValue) =>{return parseInt(previousValue) + currentValue.price},0)}</h1>
+        </div>
 
         {/* <h1>Total: {getCartTotal} </h1> */}
         
         <button className="button" onClick={() => navigate('/signup')}>Purchase</button>
-    
+        
     </div>
+
   )
 }
 

@@ -20,7 +20,6 @@ import Header from "./components/Header";
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
 function App() {
- 
   const navigate = useNavigate();
   const [rooms, setRooms] = useState([]);
   const [search, setSearch] = useState("");
@@ -29,7 +28,11 @@ function App() {
   const [cart, setCart] = useState(cartFromLocalStorage);
 
   useEffect(() => {
-    fetch(baseUrl + "/rooms")
+    fetch(baseUrl + "/rooms", {
+      headers: {
+        ...headers,
+      },
+    })
       .then((r) => r.json())
       .then((data) => setRooms(data));
   }, []);
@@ -82,6 +85,7 @@ function App() {
     }
 
     if (loggedIn) {
+      console.log("calling loggedIn");
       fetch(baseUrl + "/rooms", {
         headers: {
           ...headers,
@@ -110,7 +114,7 @@ function App() {
   }
 
   function handleDelete(id) {
-    fetch(baseUrl +`/rooms/${id}`, {
+    fetch(baseUrl + `/rooms/${id}`, {
       method: "DELETE",
       headers: {
         ...headers,
@@ -127,27 +131,28 @@ function App() {
   };
 
   return (
-    <div>
-     
-        <header className="App-header">
-          {loggedIn ? (
-            <h1>
-              Welcome, {user.username}!{" "}
-              <Avatar
-                googleId="118096717852922241760"
-                size="50"
-                round={true}
-                color="silver"
-              />
-              <img className="logo-alt" src="/images/logo2.jpg" alt="Buy The Room" />
-            </h1>
-            
-          ) : (
-            <img className="logo" src="/images/logo.jpg" alt="Buy The Room" />
-          )}
-        </header>
-   
-    
+    <div className="app">
+      <header className="App-header">
+        {loggedIn ? (
+          <h1>
+            Welcome, {user.username}!{" "}
+            <Avatar
+              googleId="118096717852922241760"
+              size="50"
+              round={true}
+              color="silver"
+            />
+            <img
+              className="logo-alt"
+              src="/images/logo2.jpg"
+              alt="Buy The Room"
+            />
+          </h1>
+        ) : (
+          <img className="logo" src="/images/logo.jpg" alt="Buy The Room" />
+        )}
+      </header>
+
       <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={user} />
       <Routes>
         <Route
@@ -190,7 +195,12 @@ function App() {
         <Route
           path="/cart"
           element={
-            <Cart cart={cart} setCart={setCart} getCartTotal={getCartTotal} loggedIn={loggedIn}/>
+            <Cart
+              cart={cart}
+              setCart={setCart}
+              getCartTotal={getCartTotal}
+              loggedIn={loggedIn}
+            />
           }
         />
         <Route
@@ -228,29 +238,29 @@ function App() {
 
 export default App;
 
-const theme = {
-  font: {
-    primary: "'Oswald', sans-serif",
-    secondary: "Arial, sans-serif",
-  },
-  colors: {
-    primary: "#f0efe6",
-  },
-};
+// const theme = {
+//   font: {
+//     primary: "'Oswald', sans-serif",
+//     secondary: "Arial, sans-serif",
+//   },
+//   colors: {
+//     primary: "#f0efe6",
+//   },
+// };
 
 //CSS styled component for header
-const HeaderContainer = styled.div`
-  text-align: center;
-  background: ${(props) => props.theme.colors.primary};
-  h1 {
-    font-family: ${(props) => props.theme.font.primary};
-  }
+// const HeaderContainer = styled.div`
+//   text-align: center;
+//   background: ${(props) => props.theme.colors.primary};
+//   h1 {
+//     font-family: ${(props) => props.theme.font.primary};
+//   }
 
-  h3 {
-    font-family: ${(props) => props.theme.font.secondary};
-    margin: inherit;
-  }
-  a {
-    text-decoration: none;
-  }
-`;
+//   h3 {
+//     font-family: ${(props) => props.theme.font.secondary};
+//     margin: inherit;
+//   }
+//   a {
+//     text-decoration: none;
+//   }
+// `;

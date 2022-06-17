@@ -10,63 +10,57 @@
   height: 10vh;
   font-size: calc(10px + 2vmin);
   color: rgb(105, 99, 99);
-  padding-top: 0px;
+  
   
 }
 
 .errors {
   color: blue;
-}
-.cart-container {
   background-color: rgb(195, 206, 216);
-
+  margin-top: 0px;
+  margin-bottom: 0;
 }
 
-.form {
-
+.signup {
+margin-bottom: 0;
   width: 100%;
   padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
   background-color: #ccc;
-  font-size: 30px;
+  font-size: 40px;
   text-align: center;
+  color: #5c5a54;
+  background-color: rgb(195, 206, 216);
+  font-weight: bold;
  
 }
 
 .login {
-  /* width: 100%; */
-  height: 50px;
-  font-size: 40px;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #ccc;
+  font-size: 30px;
   text-align: center;
-  display: block;
-  /* margin-left: 100px; */
-  /* margin-right: 100px; */
+  color: #5c5a54;
+  background-color: rgb(195, 206, 216);
+  font-weight: bold;
+ 
  
 }
 
-.login-input {
-  width: 100%;
-  margin: 10px;
-  height: 40px;
-  font-size: 40px;
-  text-align: center;
 
-}
 
 .logo{
   height: 240px;
   width: 600px;
   margin-left: 400px;;
   margin-bottom: 200px;
+  color: #5c5a54;
  
   
 }
 
 .logo-alt {
-  height: 200px;
+  height: 220px;
   width: 400px;
   float: right;
   margin-bottom: 0px;
@@ -74,10 +68,41 @@
 
 .input {
   width: 100%;
-  height: 30px;
-  font-size: 20px;
+  height: 40px;
+  font-size: 30px;
   text-align: center;
+  border: 8px solid white;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  color: #5c5a54;
+  font-weight: bold;
 
+  
+}
+
+.room-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #53514b;
+  text-decoration-line: underline;
+}
+
+.room-details {
+  color: #53514b;
+  font-size: 20px;
+}
+
+.select-input {
+    width: 100%;
+    height: 60px;
+    font-size: 30px;
+    text-align: center;
+    border: 8px solid white;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    color: #5c5a54;
+  
+    
   
 }
 
@@ -99,6 +124,10 @@
 
 .cart-link {
   background-color: rgb(195, 206, 216);
+  font-size: 35px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  
 }
 
 .details-button {
@@ -122,6 +151,9 @@
 .title {
   text-align: center;
   font-size: 40px;
+  background-color: rgb(195, 206, 216);
+  padding: 0px;
+  margin: 0px;
 }
 
 .comments {
@@ -145,17 +177,19 @@
 .forward-arrow-button {
   color: rgb(105, 203, 255); font-size: 15px; font-weight: bold; text-decoration: none; font-style: normal; font-size: 50px;}
   .myButton:hover {
-  background: #1C6EA4; }
+  background: #151718; }
   .myButton:active {
   background: #144E75; 
 }
 
 .back-arrow-button {
-  color: rgb(105, 203, 255); font-size: 15px; font-weight: bold; text-decoration: none; font-style: normal; font-size: 50px;}
+  color: rgb(1, 6, 8); font-size: 15px; font-weight: bold; text-decoration: none; font-style: normal; font-size: 50px;}
   .myButton:hover {
-  background: #1C6EA4; }
+  background: #0d0e0f; }
   .myButton:active {
-  background: #144E75; 
+  background-color: #0e0f0f; 
+  margin-bottom: 400 px;
+  
 
 }
 
@@ -167,15 +201,73 @@
   font-size: 30px;
   color: #5c5a54;
   font-weight: bold;
+  border: 8px solid white;
+  border-radius: 30px;
+}
+
+.search-form {
+  width: 100%;
+  background-color: #ccc;
+  font-size: 40px;
+  text-align: center;
+  color: #5c5a54;
+  background-color: rgb(195, 206, 216);
+  font-weight: bold;
+  border:rgb(255, 255, 255);
+  
+
+}
+
+.cart-container {
+  font-weight: bold;
+  background-color: rgb(195, 206, 216);
+  list-style: none;
+ padding-top: 10px;
+ 
+  
+}
+
+.cart-total {
+  font-weight: bold;
+  font-size: 42px;
+}
+
+.cart-price {
+  font-weight: bold;
+  font-size: 30px;
+  color: #5c5a54;
+}
+
+.remove-button {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-size: 24px;
+  cursor: pointer;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-left: 30px;
+  text-decoration: none;
+  outline: none;
+  color: rgb(165, 136, 136);
+  background-color: #d8eaf1;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-weight: bold;
+  
+}
+
+.remove-button:active {
+  background-color: #72b0e2;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .error {
   color: blue;
 }
 
-.comments-container {
-  background-color: red;
-}
 
 .details-container {
   background-color: rgb(195, 206, 216);
@@ -197,4 +289,70 @@
 
 .search button {
   width: 150px;
+}
+
+.add-image-button {
+  display: inline-block;
+ 
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: rgb(88, 146, 235);
+  background-color: #fafcfd;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-weight: bold;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #599fbb;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #85b0e2}
+
+.button:active {
+  background-color: #72b0e2;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.form-input {
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  
+}
+
+.form {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  background-color: #ccc;
+  font-size: 35px;
+  color: #5c5a54;
+  background-color: rgb(195, 206, 216);
+  font-weight: bold;
+}
+
+.orders-page {
+  background-color: rgb(195, 206, 216);
+}
+
+
+.app {
+  background-color: rgb(195, 206, 216);
 }

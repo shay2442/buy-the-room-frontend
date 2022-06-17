@@ -43,7 +43,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
                   console.log("successful login")
                   console.log(data)
 
-                  localStorage.getItem("cart")? navigate("/cart") : navigate("/room")
+                  localStorage.getItem("cart")? navigate("/rooms") : navigate("/cart")
               });
           } else {
               r.json().then((errors) => {
@@ -63,10 +63,10 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
     {/* <Grid textAlign="center" verticalAlign="middle">
       <Grid.Column style= {{ maxWidth: 450 }}> */}
         
-         <Header className="title">Sign Up!</Header>
+         <Header className="signup">Sign Up!</Header>
          <h3 className="errors"> {errors.error} </h3>
         
-          <form className='form' onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
 
               
                  

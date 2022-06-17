@@ -126,7 +126,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
       <label>
         Type of Room:
         <select
-          className="input"
+          className="select-input"
           name="category"
           placeholder="Please select one"
           value={formData.category}
@@ -197,19 +197,21 @@ function Form({ onAddRoom, updateItem, rooms }) {
           onChange={handleChange}
         ></input>
       </label>
-      <label>
+      <label >
         Images:
         <br />
         {Array.from({ length: numberOfImageFields }).map((x, index) => (
-          <>
+          
             <ImageField itemIndex={index} />
-            <br />
-          </>
+           
+         
         ))}
-        <button onClick={handleAddImageField}>Add Another Image</button>
+        <br/>
+        <button className="add-image-button" onClick={handleAddImageField}>Add Another Image</button>
       </label>
+      <br/>
 
-      <input type="submit" value={formData.id ? "Update" : "Create"} />
+      <input className="button" type="submit" value={formData.id ? "Update" : "Create"} />
 
       {/* <button className='submit-bttn' type="submit">Add Room</button> */}
     </form>

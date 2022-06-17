@@ -45,9 +45,10 @@ const RoomDetails = () => {
         </div>
       )}
 
-      <h3>
+      <h3 className="room-title">
         {" "}
-        Items Included:{" "}
+        Items Included:{" "}</h3>
+        <h3 className="room-details">
         {room?.items?.length > 0 &&
           room.items.split(",").map((item) => {
             return <p>{item}</p>;
