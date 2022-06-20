@@ -90,7 +90,6 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
                       placeholder='Password'
                       name="password"
                       icon='lock'
-                      iconPosition='left'
                       type='password'  
                       id='password'
                       value={password}
@@ -100,7 +99,6 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
                       placeholder='Password Confirmation'
                       name="passwordConfirmation"
                       icon='lock'
-                      iconPosition='left'
                       type='password'  
                       id='passwordConfirmation'
                       value={passwordConf}
