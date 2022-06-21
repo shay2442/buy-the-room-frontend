@@ -4,8 +4,13 @@ import {useEffect} from 'react'
 import styled from 'styled-components'
 function Cart({cart, setCart, getCartTotal}){
     const navigate = useNavigate();
+    const routeChange = () =>{ 
+      let path = `/checkout`; 
+      navigate(path);
+        localStorage.getItem("jwt")? navigate("/checkout") : navigate("/signup")
+    }
 
-   
+    // localStorage.getItem("jwt")? navigate("/checkout") : navigate("/signup")
 
 
   const removeFromCart = (cartItem) => {
@@ -33,7 +38,7 @@ function Cart({cart, setCart, getCartTotal}){
 
         {/* <h1>Total: {getCartTotal} </h1> */}
         
-        <button className="button" onClick={() => navigate('/signup')}>Purchase</button>
+        <button className="button" onClick={routeChange}>Purchase</button>
         
     </div>
 

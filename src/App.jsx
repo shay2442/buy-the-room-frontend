@@ -16,6 +16,7 @@ import Avatar from "react-avatar";
 import Cart from "./components/Cart";
 import styled, { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
+import CartCheckoutPage from "./components/Rooms/CartCheckoutPage";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
@@ -231,7 +232,20 @@ function App() {
           path="/rooms/:id/comments"
           element={<RoomComments user={user} />}
         />
+
+<Route
+          path="/checkout"
+          element={
+            <CartCheckoutPage
+              cart={cart}
+              setCart={setCart}
+              getCartTotal={getCartTotal}
+              loggedIn={loggedIn}
+            />
+          }
+        />
       </Routes>
+
     </div>
   );
 }

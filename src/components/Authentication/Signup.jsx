@@ -43,7 +43,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
                   console.log("successful login")
                   console.log(data)
 
-                  localStorage.getItem("cart")? navigate("/rooms") : navigate("/cart")
+                  localStorage.getItem("cart")? navigate("/cart") : navigate("/rooms")
               });
           } else {
               r.json().then((errors) => {
@@ -107,7 +107,7 @@ export default function Signup({user, room, setUser, loggedIn, loginUser}) {
               
 
             
-                  <Button disabled={passwordConf.length < 1 || password !== passwordConf} color='blue'fluid type='submit'>Sign Up</Button>
+                  <button className="signup-button" disabled={passwordConf.length < 1 || password !== passwordConf}>Sign Up</button>
                   
          
 
