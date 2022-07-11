@@ -15,6 +15,7 @@ const Login = ({ loginUser, loggedIn, user, setUser, setLoggedIn }) => {
     }
   }, [loggedIn, navigate]);
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -48,7 +49,7 @@ const Login = ({ loginUser, loggedIn, user, setUser, setLoggedIn }) => {
   return (
     <div className="form">
       <h2 className="title">Login</h2>
-      <h3 className="errors"> {errors.error} </h3>
+      <h3 className="errors"> {errors.errors} </h3>
       <form onSubmit={handleSubmit}>
         <label>Username</label>
         <input

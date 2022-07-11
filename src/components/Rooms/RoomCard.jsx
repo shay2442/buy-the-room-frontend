@@ -17,7 +17,7 @@ const RoomCard = ({ room, addToCart, handleDelete, user }) => {
     items,
     seller,
   } = room;
-  const userIsSeller = user.id === seller.id;
+  const userIsSeller = user?.id === seller?.id;
   return (
     <div>
       <Card>

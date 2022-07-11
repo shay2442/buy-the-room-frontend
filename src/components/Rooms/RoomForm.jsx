@@ -55,7 +55,7 @@ function Form({ onAddRoom, updateItem, rooms }) {
         setFormData(initialState);
       });
     navigate("/rooms");
-  }
+  } 
 
   function updateRoom(id) {
     const headers = {
