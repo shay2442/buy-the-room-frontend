@@ -46,7 +46,7 @@ const NavBar = ({ loggedIn, logoutUser, currentUser }) => {
   const loggedInLinks = () => {
     return (
       <Bar>
-        <Container>
+        <Container className = "navBar">
           <Navbar.Brand href="/rooms">Rooms To Buy</Navbar.Brand>
           <Nav>
             <Navbar.Brand href="/rooms/new">Become a Seller</Navbar.Brand>
@@ -72,6 +72,7 @@ const Bar = styled.div`
   margin: 0px;
   display: flex;
   flex-wrap: wrap;
+  
   a.link {
     text-decoration: none;
     color: #5c5a54;

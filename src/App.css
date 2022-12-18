@@ -124,7 +124,7 @@ margin-bottom: 0;
 
 .cart-link {
   background-color: rgb(195, 206, 216);
-  font-size: 35px;
+  font-size: 20px;
   margin-bottom: 0px;
   margin-top: 0px;
   
@@ -156,10 +156,6 @@ margin-bottom: 0;
   margin: 0px;
 }
 
-.comments {
-  padding:0%
-  
-}
 
 .links {
   position: fixed;
@@ -190,6 +186,19 @@ margin-bottom: 0;
   background-color: #0e0f0f; 
   margin-bottom: 400 px;
   
+
+}
+
+.comment-form {
+  padding-top: 0px;
+  height: 7vh;
+  background-color: rgb(195, 206, 216);
+  width: 100%;
+  font-size: 30px;
+  color: #5c5a54;
+  font-weight: bold;
+  border: 8px solid white;
+  border-radius: 30px;
 
 }
 
@@ -366,4 +375,11 @@ margin-bottom: 0;
 
 .app {
   background-color: rgb(195, 206, 216);
+}
+
+.navBar{
+width: 100%;
+background-color: rgb(195, 206, 216);
+  overflow: auto;
+  font-family: "Comic Sans MS, Comic Sans, cursive";
 }

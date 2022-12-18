@@ -69,10 +69,11 @@ const RoomComments = ({user}) => {
     <div >
     <Comments>
      <h3 className="error"> {errors.message} </h3>
-     <form onSubmit={handleCommentSubmit} className="form">
+     <form onSubmit={handleCommentSubmit} >
         <label>
           Comment:
           <input
+            className="search"
             type="text"
             name="content"
             value={commentFormData.content}

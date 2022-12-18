@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { baseUrl, headers } from '../../Globals'
+import { baseUrl, headers } from "../../Globals";
 const RoomDetails = () => {
   const { id } = useParams();
   const [room, setRoom] = useState({});
@@ -17,13 +17,15 @@ const RoomDetails = () => {
     <div>
       {/* <img src={ place.image } alt="place picture" height="300" width="350"  /> */}
       {/* <h1>{room.image}</h1> */}
-      <img
+      {room.image && (
+        <img
           className="image"
           src={room.image}
           alt="No Pic"
           height="200"
           width="200"
         />
+      )}
       <h3>
         {" "}
         Items Included:{" "}

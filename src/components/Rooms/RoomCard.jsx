@@ -22,13 +22,16 @@ const RoomCard = ({ room, addToCart, handleDelete, user }) => {
     <div>
       <Card>
         <div className="card">
-          <img
-            className="image"
-            src={room.image}
-            alt="No Pic"
-            height="200"
-            width="280"
-          />
+          {room.image && (
+            <img
+              className="image"
+              src={room.image}
+              alt="No Pic"
+              height="200"
+              width="280" 
+              onClick={() => navigate(`/rooms/${room.id}`)}
+            />
+          )}
           <div>
             <strong>Category: {room.category}</strong>
           </div>
